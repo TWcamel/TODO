@@ -1,5 +1,5 @@
-import * as fb from "../../firebase.js"
-import router from "../../router"
+import * as fb from "@/firebase.js"
+import router from "@/router"
 
 const state = {
     userProfile: {}
