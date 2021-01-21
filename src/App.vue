@@ -8,6 +8,7 @@
 <script>
 import { mapState } from "vuex"
 import NavBar from "./components/NavBar.vue"
+import './assets/scss/app.scss'
 
 export default {
     name: "App",

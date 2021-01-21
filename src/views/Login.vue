@@ -12,7 +12,7 @@
                 </p>
                 <p>
                     <a>TODO App</a> is a lightweight web app that enables you to
-                    have personel todos and it's easy to read. In constructing,
+                    have personal todos and it's easy to read. In constructing,
                     this app features:
                 </p>
                 <ul>
