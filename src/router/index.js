@@ -1,6 +1,6 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import { auth } from "../firebase"
+import { auth } from "@/firebase.js"
 import Dashboard from "../views/Dashboard.vue"
 
 
