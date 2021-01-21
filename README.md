@@ -7,9 +7,12 @@ Table of Contents
 
 
 ## About
-> [TODO App](https://twcamel.github.io/TODO-app/) simple web app powered by Vue.js and Firebase. Build this project by checking out The Definitive Guide with Vue.js.
+[TODO App](https://twcamel.github.io/TODO-app/) simple web app powered by Vue.js and Firebase. Build this project by checking out The Definitive Guide with Vue.js.
 
-[TODO App](https://twcamel.github.io/TODO-app/) is a lightweight web app that enables you to have personal todos and it's easy to read. In constructing, this app be featured by: 
+![](./screenshot/login-page.png)
+![](./screenshot/todo-list-page.png)
+
+This app is featured by: 
 
 - Vuex to efficiently centrally manage data 
 - Componentes for update/render DOM
