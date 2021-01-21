@@ -29,6 +29,12 @@ const actions = {
             .delete()
             .then()
             .catch(e => console.error(`Error removing document: `, e))
+    },
+
+    async doneTheTodo({ commit }, todos) {
+        let todo = (await fb.todosCollection.doc(todos.todo_id).get()).data()
+        todo.hadDone = !todo.hadDone
+        await fb.todosCollection.doc(todos.todo_id).set(todo)
     }
 }
 

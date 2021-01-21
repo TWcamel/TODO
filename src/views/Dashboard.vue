@@ -25,9 +25,26 @@
                     <div v-if="todos.length">
                         <div v-for="todo in todos" :key="todo.id" class="todo">
                             <h5>{{ todo.user.name }}</h5>
-                            <p>{{ trimLength(todo.content) }}</p>
+                                <input
+                                    type="checkbox"
+                                    @click="
+                                        doneTheTodo(`input-${todo.id}`, todo.id)
+                                    "
+                                />
+                                <label v-if="todo.hadDone"
+                                    :id="`input-${todo.id}`"
+                                    :style="`text-decoration: line-through`"
+                                    >{{ trimLength(todo.content) }}</label
+                                >
+                                <label v-else
+                                    :id="`input-${todo.id}`"
+                                    >{{ trimLength(todo.content) }}</label
+                                >
                             <ul>
-                                <li>Done {{ todo.hadDone }}</li>
+                                <li>
+                                    Done
+                                    <label>{{ todo.hadDone }}</label>
+                                </li>
                                 <li>
                                     <a @click="deleteTodo(todo.id)">Delete</a>
                                 </li>
@@ -52,7 +69,8 @@ export default {
     data() {
         return {
             todo: {
-                content: ""
+                content: "",
+                showLineThrough: ""
             }
         }
     },
@@ -80,7 +98,16 @@ export default {
         },
         deleteTodo(id) {
             if (id) this.$store.dispatch("TodoState/deleteTodo", id)
-            else (console.error('Cant delete, plz inform author'))
+            else console.error("Cant delete, plz inform author")
+        },
+        doneTheTodo(val, id) {
+            this.$store.dispatch("TodoState/doneTheTodo", {
+                todos: this.todos,
+                todo_id: id
+            })
+            document
+                .getElementById(val)
+                .style.setProperty("text-decoration", "line-through")
         }
     }
 }
