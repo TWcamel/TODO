@@ -28,9 +28,7 @@
                             <input
                                 class="todoChkBox"
                                 type="checkbox"
-                                @click="
-                                    doneTheTodo(`input-${todo.id}`, todo.id)
-                                "
+                                @click="doneTheTodo(todo.id)"
                             />
                             <label
                                 v-if="todo.hadDone"
@@ -39,11 +37,7 @@
                                     'text-decoration': 'line-through',
                                     'word-break': 'break-all'
                                 }"
-                                >{{
-                                    trimLength(todo.content)[
-                                        showMoreTodoContent
-                                    ]
-                                }}</label
+                                >{{ `${todo.content.slice(0, 50)} ...` }}</label
                             >
                             <label
                                 v-else
@@ -51,25 +45,20 @@
                                 :style="{
                                     'word-break': 'break-all'
                                 }"
-                                >{{
-                                    trimLength(todo.content)[
-                                        showMoreTodoContent
-                                    ]
-                                }}</label
+                                >{{ `${todo.content.slice(0, 50)} ...` }}</label
                             >
                             <ul>
                                 <li v-if="todo.content.length >= 50">
                                     <a
-                                        v-if="showMoreBtn"
+                                        :id="`moreTodo-${todo.id}`"
                                         class="moreTodo"
-                                        @click="toggleShowMoreTodoContent()"
+                                        @click="
+                                            toggleShowMoreTodoContent(
+                                                todo.content,
+                                                todo.id
+                                            )
+                                        "
                                         >more</a
-                                    >
-                                    <a
-                                        v-else
-                                        class="hideTodo"
-                                        @click="toggleShowMoreTodoContent()"
-                                        >hide</a
                                     >
                                 </li>
                                 <li>
@@ -102,8 +91,7 @@ export default {
             todo: {
                 content: ""
             },
-            showMoreTodoContent: 0,
-            showMoreBtn: true
+            map: new Map(),
         }
     },
     computed: {
@@ -124,26 +112,25 @@ export default {
             if (!val) return "-"
             return moment(val.toDate()).fromNow()
         },
-        trimLength(val) {
-            if (val.length >= 50) return [`${val.slice(0, 50)} ...`, val]
-            else return [val, val]
-        },
         deleteTodo(id) {
             if (id) this.$store.dispatch("TodoState/deleteTodo", id)
             else console.error("Cant delete, plz inform author")
         },
-        doneTheTodo(val, id) {
+        doneTheTodo(val) {
             this.$store.dispatch("TodoState/doneTheTodo", {
                 todos: this.todos,
-                todo_id: id
+                todo_id: val
             })
             document
-                .getElementById(val)
+                .getElementById(`input-${val}`)
                 .style.setProperty("text-decoration", "line-through")
         },
-        toggleShowMoreTodoContent() {
-            this.showMoreTodoContent = this.showMoreTodoContent > 0 ? 0 : 1
-            this.showMoreBtn = !this.showMoreBtn
+        toggleShowMoreTodoContent(val, id) {
+            let moreBtnText = document.getElementById(`moreTodo-${id}`)
+            moreBtnText.innerText = moreBtnText.innerText.indexOf("more") === 0 ? "hide" : "more"
+
+            let todoContent = document.getElementById(`input-${id}`)
+            todoContent.innerText = moreBtnText.innerText === "hide" ? val : `${val.slice(0, 50)} ...`
         }
     }
 }
