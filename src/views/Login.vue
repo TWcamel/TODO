@@ -14,7 +14,7 @@
                     Getting Started with Vue.js
                 </p>
             </div>
-            <div :class="{ 'signup-form': !showLoginForm }">
+            <div :class="{ 'signup-form': !showLoginForm }" class="col2">
                 <form v-if="showLoginForm" @submit.prevent>
                     <h1>Welcome Back</h1>
                     <div>

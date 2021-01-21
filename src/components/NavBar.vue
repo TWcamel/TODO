@@ -2,15 +2,15 @@
     <header>
         <section>
             <div>
-                <router-link class="col1" to="/">
+                <router-link to="/">
                     <h3>Home</h3>
                 </router-link>
                 <ul class="inline">
                     <li>
-                        <router-link to="/"> Dashboard></router-link>
+                        <router-link to="/"> Dashboard</router-link>
                     </li>
+                    <li><a @click="logout()">logout</a></li>
                 </ul>
-                <li><a @click="logout()">logout</a></li>
             </div>
         </section>
     </header>
@@ -21,7 +21,7 @@ export default {
     methods: {
         logout() {
             this.$store.dispatch("UserState/logout")
-        }
+        },
     }
 }
 </script>
