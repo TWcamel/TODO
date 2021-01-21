@@ -3,16 +3,34 @@
         <password-reset v-if="showPasswordReset" @close="togglePasswordReset" />
         <section>
             <div class="col1">
-                <h1>Vuegram</h1>
+                <h1>TODO app</h1>
                 <p>
                     Welcome to the
-                    <a href="https://savvyapps.com/" target="_blank"
-                        >Savvy Apps</a
-                    >
-                    sample social media web app powered by Vue.js and Firebase.
-                    Build this project by checking out The Definitive Guide to
-                    Getting Started with Vue.js
+                    <a>TODO App</a>
+                    simple web app powered by Vue.js and Firebase. Build this
+                    project by checking out The Definitive Guide with Vue.js.
                 </p>
+                <p>
+                    <a>TODO App</a> is a lightweight web app that enables you to
+                    have personel todos and it's easy to read. In constructing,
+                    this app features:
+                </p>
+                <ul>
+                    <li>
+                        Manage state for the app using Vuex with central store
+                        concept which is important for building large-scale
+                        apps.
+                    </li>
+                    <li>
+                        Leverage component with authenticated routes by using
+                        vue-router.
+                    </li>
+                    <li>Set up authentication using Firebase.</li>
+                    <li>
+                        Read/write to a database using Firebase's Cloud
+                        Firestore.
+                    </li>
+                </ul>
             </div>
             <div :class="{ 'signup-form': !showLoginForm }" class="col2">
                 <form v-if="showLoginForm" @submit.prevent>
@@ -130,7 +148,7 @@ export default {
             })
         },
         togglePasswordReset() {
-            this.showPasswordReset =! this.showPasswordReset
+            this.showPasswordReset = !this.showPasswordReset
         }
     }
 }
