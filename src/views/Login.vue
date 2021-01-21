@@ -25,12 +25,17 @@
                         Leverage component with authenticated routes by using
                         vue-router.
                     </li>
-                    <li>Set up authentication using Firebase.</li>
                     <li>
                         Read/write to a database using Firebase's Cloud
                         Firestore.
                     </li>
+                    <li>Set up authentication using Firebase.</li>
                 </ul>
+                <span class="constructingTag"
+                    ><a>Vuex</a> <a>Components</a> <a>Firebase</a>
+                    <a>Cloud Firestore</a> <a>Vue built-in function</a>
+                    <a>v-for</a> <a>v-if</a>
+                </span>
             </div>
             <div :class="{ 'signup-form': !showLoginForm }" class="col2">
                 <form v-if="showLoginForm" @submit.prevent>
