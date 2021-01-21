@@ -1,8 +1,8 @@
 import Vue from "vue"
 import Vuex from "vuex"
 
-import UserState from "./modules/UserState"
-import TodoState from "./modules/TodoState"
+import UserState from "./modules/UserState.js"
+import TodoState from "./modules/TodoState.js"
 
 Vue.use(Vuex)
 
