@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { auth } from "@/firebase.js"
+import { auth } from "../firebase.js"
 export default {
     data() {
         return {
