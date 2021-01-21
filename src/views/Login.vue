@@ -34,7 +34,7 @@
                 <span class="constructingTag"
                     ><a>Vuex</a> <a>Components</a> <a>Firebase</a>
                     <a>Cloud Firestore</a> <a>Vue built-in function</a>
-                    <a>v-for</a> <a>v-if</a>
+                    <a>scss</a>
                 </span>
             </div>
             <div :class="{ 'signup-form': !showLoginForm }" class="col2">
@@ -45,7 +45,7 @@
                         <input
                             v-model.trim="loginForm.email"
                             type="text"
-                            placeholder="you@email.com"
+                            placeholder="your@email.com"
                             id="email1"
                         />
                     </div>
@@ -90,7 +90,7 @@
                         <input
                             v-model.trim="signupForm.email"
                             type="text"
-                            placeholder="you@email.com"
+                            placeholder="your@email.com"
                             id="email2"
                         />
                     </div>

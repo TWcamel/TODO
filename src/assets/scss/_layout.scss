@@ -81,8 +81,44 @@ header {
 
         li {
             margin-bottom: 0.8rem;
-            width:35rem;
+            width: 35rem;
             word-break: break-all;
+            font-weight: 600;
+
+            &:last-child {
+                margin-bottom: 2rem;
+            }
+
+            @media screen and (max-width: 1000px) {
+                width: 20rem;
+            }
+        }
+
+        @mixin random-border-color() {
+            border: 2.5px rgb(random(255), random(190), random(200));
+            border-radius: 8px;
+            border-style: dashed;
+        }
+
+        .constructingTag {
+            $num-constructing-tag: 7;
+            a {
+                color: $white;
+                padding: 3px;
+                margin-right: 2px;
+                text-decoration: none;
+                cursor: context-menu;
+
+                @for $i from 0 to $num-constructing-tag {
+                    &:nth-child(#{$i}) {
+                        @include random-border-color();
+                    }
+                }
+
+                @media screen and (max-width: 1200px) {
+                    display: inline-flex;
+                }
+            }
         }
     }
 

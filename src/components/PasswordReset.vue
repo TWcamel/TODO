@@ -9,7 +9,7 @@
                     <input
                         v-model.trim="email"
                         type="email"
-                        placeholder="you@email.com"
+                        placeholder="your@email.com"
                     />
                 </form>
                 <p v-if="errorMsg !== ''" class="error">{{ errorMsg }}</p>
