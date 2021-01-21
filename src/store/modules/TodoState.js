@@ -1,6 +1,5 @@
 import store from ".."
 import * as fb from "../../firebase"
-import firebase from "@/firebase"
 
 const state = {
     todos: {}

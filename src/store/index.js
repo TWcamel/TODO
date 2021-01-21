@@ -1,7 +1,5 @@
 import Vue from "vue"
 import Vuex from "vuex"
-import * as fb from "../firebase"
-import router from "../router/index"
 
 import UserState from "./modules/UserState"
 import TodoState from "./modules/TodoState"
