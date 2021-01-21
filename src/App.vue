@@ -18,8 +18,5 @@ export default {
             return Object.keys(this.userProfile).length > 1
         }
     },
-    // created() {
-    //     console.log(this.showNav)
-    // }
 }
 </script>
