@@ -28,10 +28,10 @@
                             <input
                                 class="todoChkBox"
                                 type="checkbox"
-                                @click="doneTheTodo(todo.id)"
+                                @click="doneTheTodo(todo.hadDone, todo.id)"
                             />
                             <label
-                                v-if="todo.haddone"
+                                v-if="todo.hadDone"
                                 :id="`input-${todo.id}`"
                                 :style="{
                                     'text-decoration': 'line-through',
@@ -115,14 +115,15 @@ export default {
             if (val) this.$store.dispatch("TodoState/deleteTodo", val)
             else console.error("Cant delete, plz inform author")
         },
-        doneTheTodo(val) {
+        doneTheTodo(val, _id) {
             this.$store.dispatch("TodoState/doneTheTodo", {
                 todos: this.todos,
-                todo_id: val
+                todo_id: _id
             })
-            document
-                .getElementById(`input-${val}`)
-                .style.setProperty("text-decoration", "line-through")
+            let node = document.getElementById(`input-${_id}`)
+            if (val === false)
+                node.style.setProperty("text-decoration", "line-through")
+            else node.style.setProperty("text-decoration", "none")
         },
         toggleShowMoreTodoContent(val, id) {
             let moreBtnText = document.getElementById(`moreTodo-${id}`)
