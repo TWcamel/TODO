@@ -2,7 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import { auth } from "../firebase"
 import Dashboard from "../views/Dashboard.vue"
-import titleMixin from "../utils/titleMixin.js"
+import titleMixin from "../mixins/titleMixin.js"
 
 Vue.use(VueRouter)
 Vue.mixin(titleMixin)
