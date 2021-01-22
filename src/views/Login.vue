@@ -3,15 +3,15 @@
         <password-reset v-if="showPasswordReset" @close="togglePasswordReset" />
         <section>
             <div class="col1">
-                <h1>TODO app</h1>
+                <h1>TODO-list app</h1>
                 <p>
                     Welcome to the
-                    <a>TODO App</a>
+                    <a>TODO-list App</a>
                     simple web app powered by Vue.js and Firebase. Build this
                     project by checking out The Definitive Guide with Vue.js.
                 </p>
                 <p>
-                    <a>TODO App</a> is a lightweight web app that enables you to
+                    This is a lightweight web app that enables you to
                     have personal todos and it's easy to read. In constructing,
                     this app features:
                 </p>
