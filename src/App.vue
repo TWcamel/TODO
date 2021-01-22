@@ -19,6 +19,6 @@ export default {
             return Object.keys(this.userProfile).length > 1
         }
     },
-    title: `TODO-list app`
+    title: `❇ TODO-list app`
 }
 </script>
