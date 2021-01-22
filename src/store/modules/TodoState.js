@@ -1,3 +1,4 @@
+import { fn } from "moment"
 import store from ".."
 import * as fb from "../../firebase.js"
 
@@ -34,6 +35,18 @@ const actions = {
         let todo = (await fb.todosCollection.doc(todos.todo_id).get()).data()
         todo.hadDone = !todo.hadDone
         await fb.todosCollection.doc(todos.todo_id).set(todo)
+    },
+    async fetchUserTodos({ commit }, user) {
+        await fb.todosCollection.orderBy("userId").onSnapshot(snapshot => {
+            let userTodoArr = []
+            snapshot.forEach(doc => {
+                let todo = doc.data()
+                todo.id = doc.id
+
+                if (todo.userId === user.uid) userTodoArr.push(todo)
+            })
+            commit("setTodos", userTodoArr)
+        })
     }
 }
 

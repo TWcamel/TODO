@@ -15,5 +15,8 @@ auth.onAuthStateChanged(user => {
             render: h => h(App)
         }).$mount("#app")
 
-    if (user) store.dispatch("UserState/fetchUserProfile", user)
+    if (user) {
+        store.dispatch("UserState/fetchUserProfile", user)
+        store.dispatch("TodoState/fetchUserTodos", user)
+    }
 })

@@ -31,13 +31,13 @@
                                 @click="doneTheTodo(todo.id)"
                             />
                             <label
-                                v-if="todo.hadDone"
+                                v-if="todo.haddone"
                                 :id="`input-${todo.id}`"
                                 :style="{
                                     'text-decoration': 'line-through',
                                     'word-break': 'break-all'
                                 }"
-                                >{{ `${todo.content.slice(0, 50)} ...` }}</label
+                                >{{ todo.content }}</label
                             >
                             <label
                                 v-else
@@ -45,7 +45,7 @@
                                 :style="{
                                     'word-break': 'break-all'
                                 }"
-                                >{{ `${todo.content.slice(0, 50)} ...` }}</label
+                                >{{ todo.content }}</label
                             >
                             <ul>
                                 <li v-if="todo.content.length >= 50">
@@ -58,7 +58,7 @@
                                                 todo.id
                                             )
                                         "
-                                        >more</a
+                                        >hide</a
                                     >
                                 </li>
                                 <li>
@@ -90,8 +90,7 @@ export default {
         return {
             todo: {
                 content: ""
-            },
-            map: new Map(),
+            }
         }
     },
     computed: {
@@ -112,8 +111,8 @@ export default {
             if (!val) return "-"
             return moment(val.toDate()).fromNow()
         },
-        deleteTodo(id) {
-            if (id) this.$store.dispatch("TodoState/deleteTodo", id)
+        deleteTodo(val) {
+            if (val) this.$store.dispatch("TodoState/deleteTodo", val)
             else console.error("Cant delete, plz inform author")
         },
         doneTheTodo(val) {
@@ -127,10 +126,14 @@ export default {
         },
         toggleShowMoreTodoContent(val, id) {
             let moreBtnText = document.getElementById(`moreTodo-${id}`)
-            moreBtnText.innerText = moreBtnText.innerText.indexOf("more") === 0 ? "hide" : "more"
+            moreBtnText.innerText =
+                moreBtnText.innerText.indexOf("more") === 0 ? "hide" : "more"
 
             let todoContent = document.getElementById(`input-${id}`)
-            todoContent.innerText = moreBtnText.innerText === "hide" ? val : `${val.slice(0, 50)} ...`
+            todoContent.innerText =
+                moreBtnText.innerText === "hide"
+                    ? val
+                    : `${val.slice(0, 50)} ...`
         }
     }
 }
