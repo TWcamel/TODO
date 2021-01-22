@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "npm run build && cd ./dist && cp index.html 404.html"
+    "deploy": "npm run build && cd ./dist && cp index.html 404.html",
+    "dev_build": "sh ./deploy.sh"
   },
   "dependencies": {
     "core-js": "^3.6.5",
