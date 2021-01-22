@@ -39,7 +39,7 @@
             </div>
             <div :class="{ 'signup-form': !showLoginForm }" class="col2">
                 <form v-if="showLoginForm" @submit.prevent>
-                    <h1>Welcome Back</h1>
+                    <h1>Welcome Back to TODO-list app</h1>
                     <div>
                         <label for="email1">Email</label>
                         <input
@@ -108,6 +108,7 @@
                         <a @click="toggleForm()">Back to Log In</a>
                     </div>
                 </form>
+                <h5 class="signInBanner">Sign in to continue, make your time more productive</h5>
             </div>
         </section>
     </div>

@@ -23,15 +23,18 @@
     }
 
     .col1 {
+        max-width: 485px;
+        margin: 0 auto;
         color: $white;
+
         @media screen and (max-width: 742px) {
             display: none;
         }
 
         p {
-            max-width: 490px;
             margin-top: 1.3rem;
             line-height: 1.8;
+            word-break: break-all;
         }
 
         a {
@@ -40,8 +43,8 @@
         }
 
         li {
+            max-width: 410px;
             margin-bottom: 0.8rem;
-            width: 30rem;
             word-break: break-all;
             font-weight: 600;
 
@@ -57,6 +60,7 @@
         @mixin random-border-color() {
             border: 2.5px rgb(random(255), random(190), random(200));
             border-radius: 8px;
+
             border-style: dashed;
         }
 
@@ -114,6 +118,13 @@
             p {
                 margin-bottom: 2rem;
             }
+        }
+
+        .signInBanner {
+            padding-top: 1.3rem;
+            color: $medium;
+            max-width: 450px;
+            margin: 0 auto;
         }
     }
 }
