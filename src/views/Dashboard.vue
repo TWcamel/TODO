@@ -58,7 +58,7 @@
                                                 todo.id
                                             )
                                         "
-                                        >hide</a
+                                        >less</a
                                     >
                                 </li>
                                 <li>
@@ -127,11 +127,11 @@ export default {
         toggleShowMoreTodoContent(val, id) {
             let moreBtnText = document.getElementById(`moreTodo-${id}`)
             moreBtnText.innerText =
-                moreBtnText.innerText.indexOf("more") === 0 ? "hide" : "more"
+                moreBtnText.innerText.indexOf("more") === 0 ? "less" : "more"
 
             let todoContent = document.getElementById(`input-${id}`)
             todoContent.innerText =
-                moreBtnText.innerText === "hide"
+                moreBtnText.innerText === "less"
                     ? val
                     : `${val.slice(0, 50)} ...`
         }
