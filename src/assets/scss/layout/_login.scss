@@ -1,0 +1,119 @@
+#login {
+    background: linear-gradient(
+        to right,
+        $primary 0%,
+        $primary 50%,
+        $white 50%,
+        $white 100%
+    );
+
+    @media screen and (max-width: 742px) {
+        height: 100vh;
+        background: $white;
+    }
+
+    .col1,
+    .col2 {
+        height: 100vh;
+        padding-top: 30vh;
+        @media screen and (max-width: 742px) {
+            height: auto;
+            padding-top: 20vh;
+        }
+    }
+
+    .col1 {
+        color: $white;
+        @media screen and (max-width: 742px) {
+            display: none;
+        }
+
+        p {
+            max-width: 490px;
+            margin-top: 1.3rem;
+            line-height: 1.8;
+        }
+
+        a {
+            color: $white;
+            text-decoration: underline;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            width: 30rem;
+            word-break: break-all;
+            font-weight: 600;
+
+            &:last-child {
+                margin-bottom: 2rem;
+            }
+
+            @media screen and (max-width: 1000px) {
+                width: 20rem;
+            }
+        }
+
+        @mixin random-border-color() {
+            border: 2.5px rgb(random(255), random(190), random(200));
+            border-radius: 8px;
+            border-style: dashed;
+        }
+
+        .constructingTag {
+            $num-constructing-tag: 7;
+            a {
+                color: $white;
+                padding: 3px;
+                margin-right: 2px;
+                text-decoration: none;
+                cursor: context-menu;
+                display: inline-flex;
+
+                @for $i from 0 to $num-constructing-tag {
+                    &:nth-child(#{$i}) {
+                        @include random-border-color();
+                    }
+                }
+            }
+        }
+    }
+
+    .signup-form {
+        padding-top: 20vh;
+        @media screen and (max-width: 742px) {
+            padding-top: 10vh;
+        }
+    }
+
+    .col2 {
+        h1 {
+            margin-bottom: 2rem;
+        }
+
+        form {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .extras {
+            float: right;
+            text-align: right;
+
+            a {
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .password-reset {
+            h1 {
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+}
