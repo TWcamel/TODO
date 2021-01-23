@@ -135,7 +135,7 @@ export default {
                 moreBtnText.innerText === "less"
                     ? val
                     : `${val.slice(0, 50)} ...`
-        }
+        },
     }
 }
 </script>
