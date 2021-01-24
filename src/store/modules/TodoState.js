@@ -1,4 +1,3 @@
-import { fn } from "moment"
 import store from ".."
 import * as fb from "../../firebase.js"
 
@@ -36,34 +35,23 @@ const actions = {
         todo.hadDone = !todo.hadDone
         await fb.todosCollection.doc(todos.todo_id).set(todo)
     },
-    async fetchUserTodos({ commit }, user) {
-        await fb.todosCollection.orderBy("userId").onSnapshot(snapshot => {
-            let userTodoArr = []
-            snapshot.forEach(doc => {
-                let todo = doc.data()
-                todo.id = doc.id
 
-                if (todo.userId === user.uid) userTodoArr.push(todo)
+    async fetchUserTodos({ commit }, user) {
+        await fb.todosCollection
+            .orderBy("createdOn", "desc")
+            .onSnapshot(querySnapshot => {
+                let userTodoArr = []
+                querySnapshot.forEach(doc => {
+                    let todo = doc.data()
+                    todo.id = doc.id
+
+                    if (todo.userId === user.uid) userTodoArr.push(todo)
+                })
+                commit("setTodos", userTodoArr)
             })
-            commit("setTodos", userTodoArr)
-        })
+
     }
 }
-
-const updateSetTodos = fb.todosCollection
-    .orderBy("createdOn", "desc")
-    .onSnapshot(snapshot => {
-        let todosArr = []
-
-        snapshot.forEach(doc => {
-            let todo = doc.data()
-            todo.id = doc.id
-
-            todosArr.push(todo)
-        })
-
-        store.commit("TodoState/setTodos", todosArr)
-    })
 
 export default {
     namespaced: true,
@@ -71,5 +59,3 @@ export default {
     actions,
     mutations
 }
-
-export { updateSetTodos }

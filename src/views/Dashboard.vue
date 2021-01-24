@@ -29,6 +29,7 @@
                                 class="todoChkBox"
                                 type="checkbox"
                                 @click="doneTheTodo(todo.hadDone, todo.id)"
+                                :checked="chkTodoBtn(todo.hadDone)"
                             />
                             <label
                                 v-if="todo.hadDone"
@@ -136,6 +137,10 @@ export default {
                     ? val
                     : `${val.slice(0, 50)} ...`
         },
+        chkTodoBtn(val) {
+            if (val === true) return 'checked'
+            else ''
+        }
     }
 }
 </script>
