@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex"
+import { mapState } from "vuex"
 import moment from "moment"
 
 export default {
@@ -109,8 +109,7 @@ export default {
             this.todo.content = ""
         },
         formatDate(val) {
-            if (!val) return "-"
-            return moment(val.toDate()).fromNow()
+            return val ? moment(val.toDate()).fromNow() : "-"
         },
         deleteTodo(val) {
             if (val) this.$store.dispatch("TodoState/deleteTodo", val)
@@ -138,8 +137,7 @@ export default {
                     : `${val.slice(0, 50)} ...`
         },
         chkTodoBtn(val) {
-            if (val === true) return 'checked'
-            else ''
+            return val === true ? "checked" : ""
         }
     }
 }

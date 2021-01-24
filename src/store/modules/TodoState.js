@@ -12,7 +12,7 @@ const mutations = {
 }
 
 const actions = {
-    async createTodo({ state, commit }, todo) {
+    async createTodo({ state }, todo) {
         await fb.todosCollection.add({
             createdOn: new Date(),
             content: todo.content,
@@ -22,7 +22,7 @@ const actions = {
         })
     },
 
-    async deleteTodo({ state, commit }, _id) {
+    async deleteTodo({ state }, _id) {
         await fb.todosCollection
             .doc(_id)
             .delete()
@@ -45,11 +45,12 @@ const actions = {
                     let todo = doc.data()
                     todo.id = doc.id
 
-                    if (todo.userId === user.uid) userTodoArr.push(todo)
+                    if (todo.userId === user.uid) {
+                        userTodoArr.push(todo)
+                    }
                 })
                 commit("setTodos", userTodoArr)
             })
-
     }
 }
 
